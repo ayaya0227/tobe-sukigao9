@@ -2,185 +2,216 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>好きな顔TOP9</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>好きな顔TOP4</title>
 
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  background:#fff8df;
-  color:#5f513d;
-  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
-#app{
-  max-width:700px;
-  margin:auto;
-  padding:25px 16px 45px;
+
+body {
+  margin: 0;
+  background: #fff8df;
+  color: #5f513d;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+    "Yu Gothic", sans-serif;
 }
-h1{
-  text-align:center;
-  font-size:25px;
-  margin:8px 0 12px;
-  color:#8c7349;
+
+#app {
+  max-width: 700px;
+  margin: auto;
+  padding: 24px 16px 50px;
 }
-.sub{
-  text-align:center;
-  font-size:14px;
-  line-height:1.7;
-  margin-bottom:20px;
+
+h1 {
+  text-align: center;
+  color: #8d7350;
+  font-size: 25px;
+  margin: 8px 0 12px;
 }
-.progress{
-  text-align:center;
-  font-weight:bold;
-  margin-bottom:12px;
-  color:#a08552;
+
+.sub {
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 20px;
 }
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+
+.progress {
+  text-align: center;
+  color: #a08552;
+  font-weight: bold;
+  margin-bottom: 12px;
 }
-.person{
-  background:white;
-  border:4px solid transparent;
-  border-radius:18px;
-  padding:7px;
-  position:relative;
-  box-shadow:0 3px 12px #9b814222;
-  cursor:pointer;
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
-.person.selected{
-  border-color:#d5b35c;
+
+.person {
+  position: relative;
+  background: white;
+  border: 4px solid transparent;
+  border-radius: 18px;
+  padding: 7px;
+  box-shadow: 0 3px 12px rgba(100,80,30,.12);
+  cursor: pointer;
 }
-.person img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:13px;
-  display:block;
+
+.person.selected {
+  border-color: #d5b45d;
 }
-.name{
-  text-align:center;
-  font-weight:bold;
-  font-size:14px;
-  padding:8px 2px 4px;
+
+.person img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 13px;
+  display: block;
 }
-.check{
-  position:absolute;
-  right:11px;
-  top:11px;
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  background:white;
-  box-shadow:0 2px 7px #0002;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#c9aa58;
-  font-weight:bold;
+
+.name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 2px 4px;
 }
-.selected .check{
-  background:#c9aa58;
-  color:white;
+
+.check {
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 7px rgba(0,0,0,.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c9aa58;
+  font-weight: bold;
 }
-button{
-  display:block;
-  width:92%;
-  max-width:360px;
-  margin:18px auto 0;
-  padding:14px;
-  border:0;
-  border-radius:999px;
-  background:#b79a5b;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
+
+.selected .check {
+  background: #c9aa58;
+  color: white;
 }
-button:disabled{opacity:.4}
-.skip{
-  background:#e4d6ad;
-  color:#66563d;
+
+button {
+  display: block;
+  width: 92%;
+  max-width: 360px;
+  margin: 18px auto 0;
+  padding: 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #b79a5b;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
 }
-.vs{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+
+button:disabled {
+  opacity: .4;
 }
-.vscard{
-  background:white;
-  border-radius:20px;
-  padding:8px;
-  box-shadow:0 4px 15px #9b814222;
+
+.skip {
+  background: #e4d6ad;
+  color: #66563d;
 }
-.vscard img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:14px;
-  display:block;
+
+.vs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
-.vscard .name{
-  font-size:16px;
-  padding:10px 2px;
+
+.vsCard {
+  background: white;
+  border-radius: 20px;
+  padding: 8px;
+  box-shadow: 0 4px 15px rgba(100,80,30,.12);
+  cursor: pointer;
 }
-.vscard:active{transform:scale(.97)}
-.result{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
+
+.vsCard img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
 }
-.resultCard{
-  background:white;
-  padding:5px;
-  border-radius:13px;
-  position:relative;
-  box-shadow:0 3px 10px #9b814222;
+
+.vsCard .name {
+  font-size: 16px;
+  padding: 10px 2px;
 }
-.resultCard img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:9px;
-  display:block;
+
+.result {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
-.rank{
-  position:absolute;
-  left:7px;
-  top:7px;
-  width:27px;
-  height:27px;
-  border-radius:50%;
-  background:#b79a5b;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
+
+.resultCard {
+  position: relative;
+  background: white;
+  padding: 6px;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(100,80,30,.12);
 }
-.resultName{
-  text-align:center;
-  font-size:12px;
-  font-weight:bold;
-  padding:6px 1px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+
+.resultCard img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 11px;
+  display: block;
 }
-.x{
-  background:#111;
+
+.rank {
+  position: absolute;
+  left: 9px;
+  top: 9px;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  background: #b79a5b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 2;
 }
-.error{
-  text-align:center;
-  padding:50px 15px;
+
+.resultName {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 2px;
+}
+
+.x {
+  background: #111;
+}
+
+.error {
+  text-align: center;
+  padding: 50px 15px;
 }
 </style>
 </head>
 
 <body>
+
 <div id="app">
-  <div class="sub">写真を読み込んでるよ…💛</div>
+  <p class="sub">写真を読み込んでるよ…💛</p>
 </div>
 
 <script>
@@ -188,58 +219,64 @@ button:disabled{opacity:.4}
 const USER = "ayaya0227";
 const REPO = "tobe-sukigao9";
 
+const API =
+  `https://api.github.com/repos/${USER}/${REPO}/contents/`;
+
 let people = [];
 let chosen = [];
-let groupNumber = 0;
+let groupIndex = 0;
 
-let battleCandidates = [];
-let battleIndex = 0;
+let tournament = [];
 let scores = {};
 
-const API =
-`https://api.github.com/repos/${USER}/${REPO}/contents/`;
 
+/* =========================
+   写真を読み込む
+========================= */
 
-/* 写真をGitHubから取得 */
-async function loadPeople(){
+async function loadPhotos() {
 
-  try{
+  try {
 
-    const res = await fetch(API);
-    const files = await res.json();
+    const response = await fetch(API);
+    const files = await response.json();
 
-    if(!Array.isArray(files)) throw new Error();
+    if (!Array.isArray(files)) {
+      throw new Error();
+    }
 
     people = files
-      .filter(x =>
-        x.type === "file" &&
-        /\.(jpg|jpeg|png|webp)$/i.test(x.name)
+      .filter(file =>
+        file.type === "file" &&
+        /\.(jpg|jpeg|png|webp)$/i.test(file.name)
       )
-      .map(x => {
+      .map(file => {
 
-        const name = x.name
-          .replace(/\.(jpg|jpeg|png|webp)$/i,"")
-          .replace(/^IMG[_＿]?/,"");
+        const name = file.name
+          .replace(/\.(jpg|jpeg|png|webp)$/i, "")
+          .replace(/^IMG[_＿]?/, "");
 
         return {
-          name:name,
-          image:x.download_url
+          name: name,
+          image: file.download_url
         };
 
       });
 
-    if(people.length < 9) throw new Error();
+    if (people.length < 4) {
+      throw new Error();
+    }
 
-    start();
+    showStart();
 
-  }catch(e){
+  } catch (error) {
 
-    document.getElementById("app").innerHTML=`
+    document.getElementById("app").innerHTML = `
       <div class="error">
-        <h1>😭 写真が読み込めない！</h1>
+        <h1>😭 写真を読み込めない！</h1>
         <p class="sub">
-        GitHubの写真を確認してね。<br>
-        少し待ってからページを更新してみて！
+          GitHubの写真を確認してね。<br>
+          少し待ってからページを更新してみて！
         </p>
       </div>
     `;
@@ -247,250 +284,275 @@ async function loadPeople(){
 }
 
 
-/* 最初 */
-function start(){
+/* =========================
+   スタート
+========================= */
 
-  document.getElementById("app").innerHTML=`
-    <h1>✨ 好きな顔TOP9 ✨</h1>
+function showStart() {
+
+  document.getElementById("app").innerHTML = `
+    <h1>✨ あなたの「好きな顔TOP4」✨</h1>
+
     <p class="sub">
       まずは56人の中から<br>
       「好き！」と思う顔を選んでね💛<br>
       何人選んでもOK！
     </p>
-    <button onclick="begin()">スタート！</button>
+
+    <button onclick="startChoosing()">
+      スタート！
+    </button>
   `;
 }
 
 
-/* 4人ずつ開始 */
-function begin(){
+/* =========================
+   4人ずつ選ぶ
+========================= */
 
-  chosen=[];
-  groupNumber=0;
+function startChoosing() {
+
+  chosen = [];
+  groupIndex = 0;
 
   showGroup();
 }
 
 
-/* 4人表示 */
-function showGroup(){
+function showGroup() {
 
-  const start=groupNumber*4;
-  const group=people.slice(start,start+4);
+  const start = groupIndex * 4;
+  const group = people.slice(start, start + 4);
 
-  if(group.length===0){
+  if (group.length === 0) {
     finishChoosing();
     return;
   }
 
-  document.getElementById("app").innerHTML=`
+  document.getElementById("app").innerHTML = `
+
     <h1>好きな顔を選んでね💛</h1>
 
     <div class="progress">
-      ${groupNumber+1} / ${Math.ceil(people.length/4)}
+      ${groupIndex + 1} / ${Math.ceil(people.length / 4)}
     </div>
 
     <p class="sub">
-      好きな人を何人選んでもOK！<br>
-      1人も選ばずスキップもできるよ✨
+      好きな人は何人選んでもOK！<br>
+      「スキップ」でこの4人を飛ばせるよ✨
     </p>
 
-    <div class="grid" id="people"></div>
+    <div class="grid" id="peopleGrid"></div>
 
-    <button id="next" disabled onclick="nextGroup()">
+    <button id="nextButton"
+            onclick="nextGroup()"
+            disabled>
       次の4人へ
     </button>
 
-    <button class="skip" onclick="skipGroup()">
+    <button class="skip"
+            onclick="skipGroup()">
       スキップ
     </button>
   `;
 
-  const box=document.getElementById("people");
+  const grid = document.getElementById("peopleGrid");
 
-  group.forEach(person=>{
+  group.forEach(person => {
 
-    const card=document.createElement("div");
-    card.className="person";
+    const card = document.createElement("div");
 
-    card.innerHTML=`
+    card.className = "person";
+
+    card.innerHTML = `
       <div class="check">✓</div>
       <img src="${person.image}" alt="${person.name}">
       <div class="name">${person.name}</div>
     `;
 
-    card.onclick=()=>{
+    card.onclick = () => {
 
-      if(chosen.includes(person)){
+      if (chosen.includes(person)) {
 
-        chosen=chosen.filter(x=>x!==person);
+        chosen = chosen.filter(x => x !== person);
+
         card.classList.remove("selected");
 
-      }else{
+      } else {
 
         chosen.push(person);
-        card.classList.add("selected");
 
+        card.classList.add("selected");
       }
 
-      document.getElementById("next").disabled=false;
+      document.getElementById("nextButton").disabled =
+        chosen.length === 0;
     };
 
-    box.appendChild(card);
+    grid.appendChild(card);
   });
 }
 
 
 /* 次の4人 */
-function nextGroup(){
 
-  groupNumber++;
+function nextGroup() {
 
-  if(groupNumber>=Math.ceil(people.length/4)){
+  groupIndex++;
+
+  if (groupIndex >= Math.ceil(people.length / 4)) {
 
     finishChoosing();
 
-  }else{
+  } else {
 
     showGroup();
-
   }
 }
 
 
 /* スキップ */
-function skipGroup(){
 
-  groupNumber++;
+function skipGroup() {
 
-  if(groupNumber>=Math.ceil(people.length/4)){
+  groupIndex++;
+
+  if (groupIndex >= Math.ceil(people.length / 4)) {
 
     finishChoosing();
 
-  }else{
+  } else {
 
     showGroup();
-
   }
 }
 
 
-/* 候補決定 */
-function finishChoosing(){
+/* =========================
+   候補決定
+========================= */
 
-  if(chosen.length<9){
+function finishChoosing() {
 
-    document.getElementById("app").innerHTML=`
+  if (chosen.length < 4) {
+
+    document.getElementById("app").innerHTML = `
+
       <h1>もう少しだけ💛</h1>
 
       <p class="sub">
-        TOP9を作るために、<br>
-        最低9人は選んでね！🥹<br><br>
+        TOP4を作るために、<br>
+        最低4人は選んでね！🥹<br><br>
         今選んだのは ${chosen.length} 人です。
       </p>
 
-      <button onclick="begin()">
-        最初から選び直す
+      <button onclick="startChoosing()">
+        選び直す
       </button>
     `;
 
     return;
   }
 
-  startBattle();
+  startTournament();
 }
 
 
-/* 二択開始 */
-function startBattle(){
+/* =========================
+   TOP4決定
+========================= */
 
-  battleCandidates=[...chosen];
+function startTournament() {
 
-  /*
-    候補が9人ならそのまま結果へ。
-    10人以上なら二択で勝敗をつけていく。
-  */
+  scores = {};
 
-  scores={};
-
-  battleCandidates.forEach(p=>{
-    scores[p.name]=0;
+  chosen.forEach(person => {
+    scores[person.name] = 0;
   });
 
-  makeBattles();
-}
+  /*
+    候補者同士の二択を作る
+  */
 
+  const pairs = [];
 
-/* 二択カードを作る */
-function makeBattles(){
+  for (let i = 0; i < chosen.length; i++) {
 
-  const pairs=[];
-
-  for(let i=0;i<battleCandidates.length;i++){
-
-    for(let j=i+1;j<battleCandidates.length;j++){
+    for (let j = i + 1; j < chosen.length; j++) {
 
       pairs.push([
-        battleCandidates[i],
-        battleCandidates[j]
+        chosen[i],
+        chosen[j]
       ]);
-
     }
-
   }
 
-  /* 全部やると多すぎるのでランダムに最大36試合 */
-  pairs.sort(()=>Math.random()-0.5);
+  /*
+    試合数が多くなりすぎないように
+    最大36試合
+  */
 
-  const limited=pairs.slice(
+  pairs.sort(() => Math.random() - 0.5);
+
+  tournament = pairs.slice(
     0,
-    Math.min(36,pairs.length)
+    Math.min(36, pairs.length)
   );
 
-  window.battles=limited;
-  battleIndex=0;
-
-  nextBattle();
+  showBattle();
 }
 
 
-/* 次の二択 */
-function nextBattle(){
+/* =========================
+   二択
+========================= */
 
-  if(battleIndex>=window.battles.length){
+function showBattle() {
+
+  if (tournament.length === 0) {
 
     showResult();
-
     return;
   }
 
-  const pair=window.battles[battleIndex];
+  const pair = tournament.shift();
 
-  const a=pair[0];
-  const b=pair[1];
+  window.currentPair = pair;
 
-  document.getElementById("app").innerHTML=`
+  const a = pair[0];
+  const b = pair[1];
+
+  document.getElementById("app").innerHTML = `
 
     <h1>どっちの顔が好き？</h1>
 
-    <div class="progress">
-      ${battleIndex+1} / ${window.battles.length}
-    </div>
-
     <p class="sub">
-      直感で「好き！」と思う方を選んでね💛
+      直感で「好き！」と思う方をタップしてね💛
     </p>
 
     <div class="vs">
 
-      <div class="vscard" onclick="winner(0)">
+      <div class="vsCard"
+           onclick="chooseWinner(0)">
+
         <img src="${a.image}">
-        <div class="name">${a.name}</div>
+
+        <div class="name">
+          ${a.name}
+        </div>
+
       </div>
 
-      <div class="vscard" onclick="winner(1)">
+
+      <div class="vsCard"
+           onclick="chooseWinner(1)">
+
         <img src="${b.image}">
-        <div class="name">${b.name}</div>
+
+        <div class="name">
+          ${b.name}
+        </div>
+
       </div>
 
     </div>
@@ -499,88 +561,115 @@ function nextBattle(){
 
 
 /* 勝者 */
-function winner(which){
 
-  const person=window.battles[battleIndex][which];
+function chooseWinner(index) {
 
-  scores[person.name]++;
+  const winner =
+    window.currentPair[index];
 
-  battleIndex++;
+  scores[winner.name]++;
 
-  nextBattle();
+  showBattle();
 }
 
 
-/* 結果 */
-function showResult(){
+/* =========================
+   結果TOP4
+========================= */
 
-  const ranking=[...battleCandidates]
-    .sort((a,b)=>scores[b.name]-scores[a.name])
-    .slice(0,9);
+function showResult() {
 
-  window.finalRanking=ranking;
+  const ranking = [...chosen]
+    .sort((a, b) =>
+      scores[b.name] - scores[a.name]
+    )
+    .slice(0, 4);
 
-  document.getElementById("app").innerHTML=`
-    <h1>✨ あなたの「好きな顔TOP9」 ✨</h1>
+  window.finalRanking = ranking;
+
+  document.getElementById("app").innerHTML = `
+
+    <h1>✨ あなたの「好きな顔TOP4」✨</h1>
 
     <p class="sub">
       あなたが選んだ好きな顔はこちら💛
     </p>
 
-    <div class="result" id="result"></div>
+    <div class="result"
+         id="resultGrid">
+    </div>
 
-    <button class="x" onclick="shareX()">
+    <button class="x"
+            onclick="shareX()">
       𝕏 Xでシェア
     </button>
 
-    <button onclick="begin()">
+    <button onclick="startChoosing()">
       最初からやり直す
     </button>
   `;
 
-  const box=document.getElementById("result");
+  const grid =
+    document.getElementById("resultGrid");
 
-  ranking.forEach((person,i)=>{
+  ranking.forEach((person, index) => {
 
-    const card=document.createElement("div");
+    const card =
+      document.createElement("div");
 
-    card.className="resultCard";
+    card.className = "resultCard";
 
-    card.innerHTML=`
-      <div class="rank">${i+1}</div>
-      <img src="${person.image}" alt="${person.name}">
-      <div class="resultName">${person.name}</div>
+    card.innerHTML = `
+      <div class="rank">
+        ${index + 1}
+      </div>
+
+      <img src="${person.image}"
+           alt="${person.name}">
+
+      <div class="resultName">
+        ${person.name}
+      </div>
     `;
 
-    box.appendChild(card);
+    grid.appendChild(card);
   });
 }
 
 
-/* X */
-function shareX(){
+/* =========================
+   Xシェア
+========================= */
 
-  const names=window.finalRanking
-    .map((p,i)=>`${i+1}. ${p.name}`)
-    .join("\n");
+function shareX() {
 
-  const text=
-`✨ 私の「好きな顔TOP9」✨
+  const names =
+    window.finalRanking
+      .map((person, index) =>
+        `${index + 1}. ${person.name}`
+      )
+      .join("\n");
+
+  const text =
+`✨ 私の「好きな顔TOP4」✨
 
 ${names}
 
-#好きな顔9選`;
+#好きな顔4選`;
 
-  const url=
-    "https://twitter.com/intent/tweet?text="+
+  const url =
+    "https://twitter.com/intent/tweet?text=" +
     encodeURIComponent(text);
 
-  window.open(url,"_blank");
+  window.open(url, "_blank");
 }
 
 
-loadPeople();
+/* スタート */
+
+loadPhotos();
 
 </script>
+
 </body>
 </html>
